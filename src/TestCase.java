@@ -1,11 +1,16 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +46,18 @@ public class TestCase {
 		test.clear();
 		list.clear();
 		assertTrue(list.isEmpty());
+		assertEquals(test.size(), list.size());
 
+		setup();
+		for (int i = 0; i < 10000; i++) {
+			test.add(i);
+			list.add(i);
+		}
+
+		test.clear();
+		list.clear();
+		assertTrue(list.isEmpty());
+		assertEquals(test.size(), list.size());
 	}
 
 	@Test
@@ -97,6 +113,12 @@ public class TestCase {
 
 		assertTrue(list.contains(30));
 		assertFalse(list.contains(50));
+
+		setup();
+		for (int i = 0; i < 10000; i++) {
+			list.add(i);
+			assertTrue(list.contains(i));
+		}
 	}
 
 	@Test
@@ -202,9 +224,17 @@ public class TestCase {
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testNullCollections() {
+	public void testNullAddAll() {
 		list.addAll(null);
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void testNullRetainAll() {
 		list.retainAll(null);
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void testNullRemoveAll() {
 		list.removeAll(null);
 	}
 
@@ -314,5 +344,150 @@ public class TestCase {
 		Object[] b = list.toArray();
 
 		assertArrayEquals(a, b);
+
+		setup();
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void testNoMoreElementsInIterator() {
+		for (int i = 0; i < 100; i++) {
+			list.add(i);
+		}
+
+		Iterator<Integer> ti = list.listIterator();
+
+		while (ti.hasNext()) {
+			ti.next();
+		}
+
+		ti.next();
+	}
+
+	@Test(expected = ConcurrentModificationException.class)
+	public void testConcurrentModification() {
+		list.add(1);
+		Iterator<Integer> it = list.iterator();
+		list.remove(0);
+		it.next();
+	}
+
+	@Test
+	public void testClone() {
+		for (int i = 0; i < 100; i++) {
+			list.add(i * 1000);
+		}
+		DLList<Integer> c = list.clone();
+		assertFalse(c == list);
+		assertTrue(c.equals(list));
+	}
+
+	@Test
+	public void testIteratorSet() {
+		for (int i = 0; i < 10; i++) {
+			test.add(i);
+			list.add(i);
+		}
+
+		ListIterator<Integer> it = test.listIterator();
+		ListIterator<Integer> ti = list.listIterator();
+
+		it.next();
+		ti.next();
+		it.set(4);
+		ti.set(4);
+		assertArrayEquals(test.toArray(), list.toArray());
+
+		while (it.hasNext()) {
+			it.next();
+			ti.next();
+		}
+
+		it.previous();
+		ti.previous();
+
+		it.set(1000);
+		ti.set(1000);
+
+		assertArrayEquals(test.toArray(), list.toArray());
+		assertEquals(test.size(), list.size());
+	}
+
+	@Test(expected = ArrayStoreException.class)
+	public void testWrongArrayType() {
+		list.add(1);
+		String[] s = list.toArray(new String[0]);
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void testNullConstructor() {
+		list = new DLList<Integer>(null);
+	}
+
+	@Test
+	public void testAddInConstructor() {
+		List<Integer> ll = new LinkedList<>();
+		for (int i = 0; i < 10; i++) {
+			ll.add(i);
+		}
+
+		list = new DLList<>(ll);
+		assertEquals(ll.size(), list.size());
+		assertTrue(ll.containsAll(list) && list.containsAll(ll));
+		assertFalse(list.isEmpty());
+	}
+
+	@Test
+	public void testGetAtIndex() {
+		Integer[] a = new Integer[500];
+		for (int i = 0; i < 500; i++) {
+			a[i] = 500 - i;
+			list.add(i);
+			test.add(i);
+		}
+
+		for (int i = 0; i < 500; i++) {
+			assertEquals(test.get(i), list.get(i));
+		}
+
+		for (int i = 0; i < 500; i++) {
+			int x = a[i];
+			assertEquals(test.indexOf(x), list.indexOf(x));
+		}
+	}
+
+	@Test
+	public void testSetAtIndex() {
+		for (int i = 0; i < 1000; i++) {
+			test.add(i % 30);
+			list.add(i % 30);
+		}
+
+		test.set(10, 5000);
+		list.set(10, 5000);
+
+		assertArrayEquals(test.toArray(), list.toArray());
+	}
+
+	@Test
+	public void testAddAtIndex() {
+		for (int i = 0; i < 10; i++) {
+			test.add(i);
+			list.add(i);
+		}
+
+		test.add(4, 420);
+		list.add(4, 420);
+		assertEquals(test.size(), list.size());
+		assertArrayEquals(test.toArray(), list.toArray());
+	}
+
+	@Test
+	public void testLastIndexOf() {
+		for (int i = 0; i < 1000; i++) {
+			test.add(i % 30);
+			list.add(i % 30);
+		}
+
+		assertEquals(test.lastIndexOf(29), list.lastIndexOf(29));
 	}
 }
