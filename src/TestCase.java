@@ -493,9 +493,13 @@ public class TestCase {
 
 	@Test
 	public void testEquals() {
+		List<Integer> l = new DLList<>();
 		for (int i = 0; i < 50; i++) {
 			list.add(i);
+			l.add(i);
 		}
-		System.out.println(list.hashCode());
+		assertTrue(l.equals(list));
+		l.add(1);
+		assertFalse(l.equals(list));
 	}
 }

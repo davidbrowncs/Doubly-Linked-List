@@ -160,7 +160,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.lang.Object#hashCode()
 		 */
 		@Override
@@ -175,7 +175,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.lang.Object#equals(java.lang.Object)
 		 */
 		@Override
@@ -198,19 +198,18 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 			} else if (!content.equals(other.content)) {
 				return false;
 			}
+			if (other.next == this.next && other.prev == this.prev) {
+				return true;
+			}
 			if (next == null) {
 				if (other.next != null) {
 					return false;
 				}
-			} else if (!next.equals(other.next)) {
-				return false;
 			}
 			if (prev == null) {
 				if (other.prev != null) {
 					return false;
 				}
-			} else if (!prev.equals(other.prev)) {
-				return false;
 			}
 			return true;
 		}
@@ -238,7 +237,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#contains(java.lang.Object)
 	 */
 	@Override
@@ -296,7 +295,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.ListIterator#hasPrevious()
 		 */
 		@Override
@@ -324,7 +323,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.ListIterator#nextIndex()
 		 */
 		@Override
@@ -334,7 +333,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.ListIterator#previousIndex()
 		 */
 		@Override
@@ -344,7 +343,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.Iterator#remove()
 		 */
 		@Override
@@ -361,7 +360,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see java.util.ListIterator#set(java.lang.Object)
 		 */
 		@Override
@@ -472,7 +471,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#toArray(java.lang.Object[])
 	 */
 	@SuppressWarnings("unchecked")
@@ -494,7 +493,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#add(java.lang.Object)
 	 */
 	@Override
@@ -510,7 +509,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#remove(java.lang.Object)
 	 */
 	@Override
@@ -562,7 +561,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#addAll(java.util.Collection)
 	 */
 	@Override
@@ -577,7 +576,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
 	@Override
@@ -608,7 +607,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
 	@Override
@@ -618,7 +617,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -928,7 +927,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -943,7 +942,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
