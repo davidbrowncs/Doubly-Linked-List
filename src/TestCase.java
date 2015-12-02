@@ -415,7 +415,7 @@ public class TestCase {
 	@Test(expected = ArrayStoreException.class)
 	public void testWrongArrayType() {
 		list.add(1);
-		String[] s = list.toArray(new String[0]);
+		list.toArray(new String[0]);
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -489,5 +489,13 @@ public class TestCase {
 		}
 
 		assertEquals(test.lastIndexOf(29), list.lastIndexOf(29));
+	}
+
+	@Test
+	public void testEquals() {
+		for (int i = 0; i < 50; i++) {
+			list.add(i);
+		}
+		System.out.println(list.hashCode());
 	}
 }

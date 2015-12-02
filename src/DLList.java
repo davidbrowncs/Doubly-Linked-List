@@ -124,7 +124,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 		}
 
 		/**
-		 * Initialise an element without specifiying its pointers. The next and
+		 * Initialise an element without specifying its pointers. The next and
 		 * previous fields are initialised to the dummy element.
 		 *
 		 * @param c
@@ -137,9 +137,9 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 		}
 
 		/**
-		 * Specialised hashcode function to ensure that if an element's next or
-		 * previous field point to itself, the normal hashcode function will
-		 * terminate.
+		 * Specialised hashcode function to ensure that if the caller is the
+		 * dummy element, then it will terminate immediately, since
+		 * {@code dummy} is always the first element the list calls hashcode of.
 		 *
 		 * @param caller
 		 *            The parent of this element, this element is referenced in
@@ -148,11 +148,12 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 		 * @return The resulting hashcode of this element.
 		 */
 		private int innerHashCode(Elem caller) {
-			if (caller != this) {
-				return hashCode();
+			if (caller == dummy) {
+				return 1;
 			} else {
-				return 31; // Need to check if the caller is the same as this
-							// (in the case where dummy.next/prev == dummy)
+				return hashCode(); // Need to check if the caller is the dummy,
+									// since dummy is always the first element
+									// processed by the list's hashcode function
 			}
 		}
 
@@ -167,7 +168,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 			int result = 1;
 			result = prime * result + next.innerHashCode(this);
 			result = prime * result + prev.innerHashCode(this);
-			result = prime * result + content.hashCode();
+			result = prime * result + (content == null ? 1 : content.hashCode());
 			return result;
 		}
 
