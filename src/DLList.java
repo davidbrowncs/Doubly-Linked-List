@@ -62,7 +62,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 	 * Default initialisation of the Linked list.
 	 */
 	public DLList() {
-		dummy = new Elem(null);
+		dummy = new Elem(null, null, null);
 		dummy.prev = dummy;
 		dummy.next = dummy;
 	}
@@ -160,7 +160,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.lang.Object#hashCode()
 		 */
 		@Override
@@ -175,7 +175,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.lang.Object#equals(java.lang.Object)
 		 */
 		@Override
@@ -217,7 +217,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#size()
 	 */
 	@Override
@@ -227,7 +227,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#isEmpty()
 	 */
 	@Override
@@ -237,7 +237,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#contains(java.lang.Object)
 	 */
 	@Override
@@ -295,7 +295,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.ListIterator#hasPrevious()
 		 */
 		@Override
@@ -305,7 +305,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.ListIterator#previous()
 		 */
 		@Override
@@ -323,7 +323,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.ListIterator#nextIndex()
 		 */
 		@Override
@@ -333,7 +333,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.ListIterator#previousIndex()
 		 */
 		@Override
@@ -343,7 +343,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.Iterator#remove()
 		 */
 		@Override
@@ -360,7 +360,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.ListIterator#set(java.lang.Object)
 		 */
 		@Override
@@ -388,7 +388,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.ListIterator#add(java.lang.Object)
 		 */
 		@Override
@@ -405,7 +405,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.Iterator#hasNext()
 		 */
 		@Override
@@ -415,7 +415,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 		/*
 		 * (non-Javadoc)
-		 *
+		 * 
 		 * @see java.util.Iterator#next()
 		 */
 		@Override
@@ -435,7 +435,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#iterator()
 	 */
 	@Override
@@ -445,7 +445,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#listIterator()
 	 */
 	@Override
@@ -455,7 +455,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#toArray()
 	 */
 	@Override
@@ -471,7 +471,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#toArray(java.lang.Object[])
 	 */
 	@SuppressWarnings("unchecked")
@@ -493,7 +493,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#add(java.lang.Object)
 	 */
 	@Override
@@ -509,7 +509,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#remove(java.lang.Object)
 	 */
 	@Override
@@ -542,7 +542,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#containsAll(java.util.Collection)
 	 */
 	@Override
@@ -561,7 +561,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#addAll(java.util.Collection)
 	 */
 	@Override
@@ -576,7 +576,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
 	@Override
@@ -607,7 +607,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
 	@Override
@@ -617,7 +617,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -656,7 +656,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#clear()
 	 */
 	@Override
@@ -669,7 +669,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#get(int)
 	 */
 	@Override
@@ -688,7 +688,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
 	@Override
@@ -708,7 +708,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
 	@Override
@@ -729,7 +729,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#remove(int)
 	 */
 	@Override
@@ -766,7 +766,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#indexOf(java.lang.Object)
 	 */
 	@Override
@@ -790,7 +790,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#lastIndexOf(java.lang.Object)
 	 */
 	@Override
@@ -814,7 +814,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#listIterator(int)
 	 */
 	@Override
@@ -829,7 +829,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.List#subList(int, int)
 	 */
 	@Override
@@ -853,7 +853,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.Queue#offer(java.lang.Object)
 	 */
 	@Override
@@ -863,7 +863,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.Queue#remove()
 	 */
 	@Override
@@ -876,7 +876,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.Queue#poll()
 	 */
 	@Override
@@ -886,7 +886,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.Queue#element()
 	 */
 	@Override
@@ -899,7 +899,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.util.Queue#peek()
 	 */
 	@Override
@@ -910,7 +910,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.lang.Object#clone()
 	 */
 	@SuppressWarnings("unchecked")
@@ -927,7 +927,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -942,7 +942,7 @@ public class DLList<T> implements List<T>, Queue<T>, Cloneable, Serializable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
